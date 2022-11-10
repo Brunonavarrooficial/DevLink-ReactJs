@@ -5,6 +5,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
+import { Input } from '../../components/Input';
 
 import './login.css';
 
@@ -24,7 +25,7 @@ export default function Login() {
         signInWithEmailAndPassword(auth, email, password)
             .then(() => {
                 toast.success('Logado com sucesso!')
-                navigate('/admin', { replace: true })                
+                navigate('/admin', { replace: true })
                 console.log('USUARIO LOGADO COM SUCESSO!')
             })
             .catch(() => {
@@ -41,20 +42,19 @@ export default function Login() {
             <Logo />
 
             <form className='form' onSubmit={handleLogin}>
-                <input
+                <Input
                     type={'email'}
                     placeholder="Digite seu e-mail.."
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
-                <input
+                <Input
                     type={'password'}
                     placeholder="**********"
                     autoComplete='on'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-
                 <button type='submit'>Acessar</button>
             </form>
         </div>
