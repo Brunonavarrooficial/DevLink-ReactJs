@@ -15,10 +15,12 @@
 }
 
 .nav-header button{
+    display: flex;
+    flex-direction: column;
     border: 0;
     background-color: transparent;
     margin-right: 24px;
-    margin-left: 8px;
+    margin-left: 8px;    
 }
 
 .nav-header a{
@@ -27,6 +29,8 @@
     transition: color 0.2;
 }
 
-.nav-header a:hover{
+.nav-header a:hover,
+.nav-header button:hover{
     color: #eda617;
 }
+

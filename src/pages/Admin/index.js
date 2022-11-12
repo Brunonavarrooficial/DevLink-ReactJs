@@ -1,15 +1,7 @@
-import { useState } from 'react';
-
-import './admin.css';
-import Header from "../../components/Header";
-
-import { Logo } from '../../components/Logo/';
-import { Input } from '../../components/Input';
-
+import { useEffect, useState } from 'react';
 import { MdAddLink } from 'react-icons/md';
 import { FiTrash2 } from 'react-icons/fi';
-
-import { db } from '../../services/firebaseconnection';
+import { toast } from 'react-toastify';
 
 import {
     addDoc,
@@ -21,18 +13,45 @@ import {
     deleteDoc
 } from 'firebase/firestore';
 
-import {toast} from 'react-toastify';
+import { db } from '../../services/firebaseconnection';
+
+import Header from "../../components/Header";
+import { Logo } from '../../components/Logo/';
+import { Input } from '../../components/Input';
+
+import './admin.css';
 
 export default function Admin() {
     const [nameInput, setNameInput] = useState('');
     const [urlInput, setUrlInput] = useState('');
     const [backgroundColorInput, setBackgroundColorInput] = useState('#f1f1f1')
     const [textColorInput, setTextColorInput] = useState('#121212')
+    const [links, setLinks] = useState([])
 
-    async function handleRegister(e){
+    useEffect(() => {
+        const linksRef = collection(db, 'links')
+        const queryRef = query(linksRef, orderBy('created', 'asc'))
+
+        onSnapshot(queryRef, (snapshot) => {
+            let lista = [];
+
+            snapshot.forEach((doc) => {
+                lista.push({
+                    id: doc.id,
+                    name: doc.data().name,
+                    url: doc.data().url,
+                    bg: doc.data().bg,
+                    color: doc.data().color
+                })
+            })
+            setLinks(lista);
+        })
+    }, [])
+
+    async function handleRegister(e) {
         e.preventDefault();
-        
-        if(nameInput === '' || urlInput === ''){
+
+        if (nameInput === '' || urlInput === '') {
             toast.warn('Preencha todos os campos')
             return;
         }
@@ -43,15 +62,20 @@ export default function Admin() {
             color: textColorInput,
             created: new Date(),
         })
-        .then(() => {
-            setNameInput('')
-            setUrlInput('')
-            console.log('link registrado com sucesso!')
-        })
-        .catch((error) =>{
-            console.log('Erro ao Registrar' + error)
-            toast.error('ops erro ao salvar o link')
-        })
+            .then(() => {
+                setNameInput('')
+                setUrlInput('')
+                console.log('link registrado com sucesso!')
+            })
+            .catch((error) => {
+                console.log('Erro ao Registrar' + error)
+                toast.error('ops erro ao salvar o link')
+            })
+    }
+
+    async function handleDeleteLink(id){
+        const docRef = doc(db, 'links', id)
+        await deleteDoc(docRef)       
     }
 
     return (
@@ -110,17 +134,21 @@ export default function Admin() {
             <h2 className='title'>
                 Meus links
             </h2>
-            <article
-                className='list animate-pop'
-                style={{ backgroundColor: "#000", color: '#FFF' }}
-            >
-                <p>Grupo exclusivo no Telegram</p>
-                <div>
-                    <button className='btn-delete'>
-                        <FiTrash2 size={28} color="#FFF" />
-                    </button>
-                </div>
-            </article>
+            {links.map((item, index) => (
+                <article
+                key={index}
+                    className='list animate-pop'
+                    style={{ backgroundColor: item.bg, color: item.color }}
+                >
+                    <p>{item.name}</p>
+                    <div>
+                        <button className='btn-delete' onClick={() => handleDeleteLink(item.id)}>
+                            <FiTrash2 size={28} color="#FFF" />
+                        </button>
+                    </div>
+                </article>
+            ))}
+
 
         </div>
     )

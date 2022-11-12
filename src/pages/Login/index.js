@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { Logo } from '../../components/Logo/';
-import { auth } from '../../services/firebaseconnection';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
+
+import { Logo } from '../../components/Logo/';
 import { Input } from '../../components/Input';
+
+import { auth } from '../../services/firebaseconnection';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 import './login.css';
 

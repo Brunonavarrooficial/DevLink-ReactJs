@@ -3,9 +3,11 @@ import { createBrowserRouter } from "react-router-dom"
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Admin from './pages/Admin';
-import Error from "./pages/error";
+import Error from "./pages/Error";
+import Social from "./pages/Networks";
 
 import Private from "./routes/Private";
+import PrivateLogin from "./routes/PrivateLogin";
 
 const router = createBrowserRouter([
   {
@@ -14,15 +16,19 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <Login />
+    element: <PrivateLogin> <Login /> </PrivateLogin>
   },
   {
     path: '/admin',
-    element: <Private> <Admin /> </Private> 
+    element: <Private> <Admin /> </Private>
+  },
+  {
+    path: '/admin/social',
+    element: <Private> <Social /> </Private>
   },
   {
     path: '*',
-    element: <Error/>,
+    element: <Error />,
   }
 ]);
 

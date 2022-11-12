@@ -1,0 +1,20 @@
+.home-header{
+    width: 100%;
+    max-width: 600px;    
+}
+
+.nav-home-header a{
+    display: flex;    
+    flex-direction: column;
+    border: 0;
+    background-color: transparent;
+    color: #fff;
+    margin-right: 24px;
+    margin-left: 8px;    
+}
+
+
+.nav-home-header a:hover{
+    color: #eda617;
+}
+
