@@ -1,6 +1,65 @@
-# DevLink Pages
+# DevLink Page 
 
-Criando Rotas de Paginas!
+Projeto de Página de links personalizados para Redes Sociais
+
+Staks: React-Js,Firebase, JavaScript and CSS.
+
+* Realizado
+    * Criação do Layout LandPage
+    * Validação de Login
+    * Validações de Formulario
+
+CRUD -> CREATE,READ, UPDATE and DELETE
+
+Conexão com banco de dados não relacional Firebase
+#
+
+Deploy Cloud Netlify ☁️🚀
+
+[DevLinks Page]()
+
+* Stacks 📚 and Skills 🧠:
+
+    * <img width='30' align='center' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />React-Js<img width='30' align='center' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
+        * JSX
+        * Bibliotecas:
+            * ```
+                "dependencies": {
+                    "@testing-library/jest-dom": "^5.16.5",
+                    "@testing-library/react": "^13.4.0",
+                    "@testing-library/user-event": "^13.5.0",
+                    "firebase": "^9.13.0",
+                    "react": "^18.2.0",
+                    "react-dom": "^18.2.0",
+                    "react-icons": "^4.6.0",
+                    "react-router-dom": "^6.4.3",
+                    "react-scripts": "5.0.1",
+                    "react-toastify": "^9.1.1",
+                    "web-vitals": "^2.1.4"  
+                    }
+    * <img width='30' align='center' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" />CSS<img align='center' width='30' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" />
+        * Flex-Box        
+    * <img width='30' align='center' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" /> JavaScript <img width='30' align='center' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
+        * DOM
+        * Imports
+        * Eventos
+        * Funções
+#
+
+<div align='center'>
+<h3>Page 📑:</h3>
+<h4>Fazendo Login e Criando links 📲</h4>
+<img src="./public/assets/devlinkpage.gif"/>
+</div>
+
+#
+
+<div align='center'>
+<h3>Database Firebase 📲:</h3>
+<img src="./public/assets/firebase.gif"/>
+</div>
+
+
 
 # Getting Started with Create React App
 
